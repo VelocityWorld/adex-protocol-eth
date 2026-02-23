@@ -5,7 +5,7 @@ import "./interfaces/IERC20.sol";
 
 contract StakingMigratorGovernance {
 	address public immutable actualGovernance;
-	uint256 public immutable deadline;
+	uint256 public deadline;
 
 	constructor(uint256 _customDeadline) {
 		actualGovernance = msg.sender;
@@ -13,10 +13,11 @@ contract StakingMigratorGovernance {
 		else deadline = block.timestamp + 90 days;
 	}
 
-	function migrate(IStakingPool oldPool, uint shares, bool skipMint, IStakingPool newPool) external {
+	function migrate(address oldPoolAddress, uint shares, bool skipMint, IStakingPool newPool) external {
 		require(block.timestamp <= deadline, "migrating past deadline");
 
-		IERC20 token = IERC20(oldPool.baseToken());
+		IERC20 token = IERC20(oldPoolAddress);
+		IStakingPool oldPool = IStakingPool(oldPoolAddress);
 		uint256 startAmount = token.balanceOf(address(this));
 
 		// first, pull the old staking tokens and temporarily set rage leave percentage so that we can pull the baseToken
@@ -27,7 +28,7 @@ contract StakingMigratorGovernance {
 		oldPool.setRageReceived(rageReceived);
 
 		// then stake all baseTokens we have in the new pool
-		require(token == IERC20(newPool.baseToken()), "baseToken not the same");
+		require(address(token) == address(newPool.baseToken()), "baseToken not the same");
 		uint tokenAmount = token.balanceOf(address(this)) - startAmount;
 		token.approve(address(newPool), tokenAmount);
 		newPool.enterTo(msg.sender, tokenAmount);
